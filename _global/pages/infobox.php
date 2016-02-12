@@ -55,17 +55,6 @@
 				{
 					$posb_name = '';
 				}
-					/* set the side info variables appropriately */
-					$name = $name;
-					$date_of_birth = $date_of_birth;
-					$location = $location;
-					$char_image = $char_image;
-					$rank_name = $rank_name;
-					$first_name = $first_name;
-					$last_name = $last_name;
-					$suffix = $suffix;
-					$position_1 = $position_1;
-					$position_2 = $position_2;
 			
 		}
 		else
