@@ -22,12 +22,23 @@ if ($this->auth->is_logged_in())
 		$imgarr = explode(",", $character->images);
 		$char_image = $imgarr[0];
 		
+		// Out of the box, this won't actually work. Models can only be loaded from a controller and
+		// the positions controller isn't actually autoloaded in any of the base controllers. The only
+		// viable way to address this is have your instructions tell admins that they'll need to update
+		// the application/config/autoload.php file with "$autoload['model'] = array('positions_model');"
+		// underneath the require statement. That will autoload the positions model and they'll be able
+		// to grab the positions.
+		
 		// Get the position names
-		$posa_name = $this->positions_model->get_position($character->position_1, 'pos_name');
-		$posb_name = $this->positions_model->get_position($character->position_2, 'pos_name');
+		$posa_name = ($this->positions_model)
+			? $this->positions_model->get_position($character->position_1, 'pos_name')
+			: false;
+		$posb_name = ($this->positions_model)
+			? $this->positions_model->get_position($character->position_2, 'pos_name')
+			: false;
 	}
 	
-	#TODO: you'll want to do something here in the (unlikely) scenario where there is no user object
+	// You'll want to do something here in the (unlikely) scenario where there is no user object
 }
 else
 {
